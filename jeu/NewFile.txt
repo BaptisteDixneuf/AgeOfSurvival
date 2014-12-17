@@ -1,0 +1,119 @@
+  /*1-Récupérer les anciennes coordonnées */ 
+    
+   var url= "jeuAjax.php";
+    
+    /* Déclaration des variables en dehors de la fonction pour la portée des varaibles*/
+
+var map_abscisse=0;
+    var map_ordonnee=0;
+    var abscisse=0;
+    var ordonnee=0;
+  
+    function ObtenirDeplacement(pseudo)
+    {
+        
+       
+	/*	$.post(url,{action:"obtenircoordonnee",pseudo: pseudo},function(d)
+        {
+         
+				if(d.erreur=="ok"){
+                    
+                   /* console.log(d.map_abscisse);
+                    console.log(d.map_ordonnee);
+                    console.log(d.abscisse);
+                    console.log(d.ordonnee);*/
+                       
+                       
+                   /* map_abscisse=d.map_abscisse;
+					map_ordonnee=d.map_ordonnee;
+					abscisse=d.abscisse;
+					ordonnee=d.ordonnee;
+                       
+                    console.log('Dans la fonction  ObtenirDeplacement ')
+                    console.log(map_abscisse);
+                    console.log(map_ordonnee);
+                    console.log(abscisse);
+                    console.log(ordonnee);*/
+                       
+                    /*return {'map_abscisse': map_abscisse,
+                        'map_ordonnee': map_ordonnee,
+                        'abscisse': abscisse,
+                        'ordonnee': ordonnee
+                    };*/
+                         
+		/*	}
+			else{
+				alert(data.erreur);
+			}		 
+	    },"json");*/
+        
+        $.ajax({
+          type: 'POST',
+          async: false,
+          url:url,
+          data:{action:"obtenircoordonnee",pseudo: pseudo},
+          success: function(d){
+                    
+                    console.debug(">>",d);
+                    alert(d);
+                    
+                    alert(d.map_abscisse);
+                    map_abscisse=d.map_abscisse;
+    				map_ordonnee=d.map_ordonnee;
+					abscisse=d.abscisse;
+					ordonnee=d.ordonnee;
+                    console.log('Dans la fonction  ObtenirDeplacement ');
+                    console.log(map_abscisse);
+                    console.log(map_ordonnee);
+                    console.log(abscisse);
+                    console.log(ordonnee);
+                    
+          }
+         
+});
+        
+        
+        
+       
+	}
+
+    
+    ObtenirDeplacement(pseudo);
+     
+       /*map_abscisse = map_abscisse;
+       map_ordonnee = map_ordonnee;
+        abscisse = abscisse;
+       ordonnee =ordonnee;*/
+       
+        console.log('En dehors de la fonction  ObtenirDeplacement ');
+        console.log(map_abscisse);
+        console.log(map_ordonnee);
+        console.log(abscisse);
+        console.log(ordonnee);
+        
+        document.getElementById("test").innerHTML=map_abscisse+" "+map_ordonnee;
+        
+        
+    /*    
+    var a="ancien a";
+    var b="ancien b";
+    function pouet() {
+        console.log('Dans la fonction  pouet ');
+        var a="nouveau a";
+        b="nouveau b";
+        console.log(a);
+        console.log(b);
+    }
+    pouet();
+     console.log('En dehors de la fonction  pouet ');
+    console.log(a);
+    console.log(b);
+    
+    document.getElementById("a").innerHTML=a+" "+b;*/
+
+
+
+var abscisse = 1;
+var ordonnee = 2;
+var position = String(abscisse)+ String(ordonnee);
+alert(position);
